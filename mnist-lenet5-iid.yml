@@ -1,0 +1,77 @@
+algorithm:
+  alpha1: 0.75
+  alpha2: 0.01
+  alpha3: 0.1
+  type: fedavg
+clients:
+  avg_training_time: 10
+  comm_simulation: true
+  compute_comm_time: true
+  do_test: false
+  per_round: 10
+  random_seed: 1
+  simulation_distribution:
+    alpha: 1
+    distribution: pareto
+  speed_simulation: true
+  total_clients: 100
+  type: simple
+data:
+  data_path: path_of_data
+  datasource: MNIST
+  partition_size: 600
+  random_seed: 1
+  sampler: iid
+parameters:
+  optimizer:
+    lr: 0.01
+    momentum: 0.9
+    weight_decay: 0.0
+results:
+  result_path: results/mnist-lenet5/iid
+  types: round, accuracy, elapsed_time, comm_time, round_time,comm_overhead
+server:
+  address: 127.0.0.1
+  desired_duration: 50
+  do_test: true
+  exploration_factor: 0.9
+  penalty: 2
+  penalty_beta: 0
+  port: 8000
+  random_seed: 1
+  step_window: 2
+  autos:
+      random_seed: 1
+      new_gen: 100
+      method_name: "rnn"
+      gpu: 0
+      top_k: 100
+      gen_num: 25
+      encoder_layers: 1
+      encoder_hidden_size: 64
+      encoder_emb_size: 32
+      mlp_layers: 2
+      mlp_hidden_size: 200
+      decoder_layers: 1
+      decoder_hidden_size: 64
+      encoder_dropout: 0.0
+      mlp_dropout: 0.0
+      decoder_dropout: 0.0
+      l2_reg: 0.0
+      max_step_size: 100
+      trade_off: 0.8
+      epochs: 200
+      batch_size: 1024
+      lr: 0.001
+      optimizer: "adam"
+      grad_bound: 5.0
+
+trainer:
+  batch_size: 32
+  epochs: 5
+  max_concurrency: 2
+  model_name: lenet5
+  optimizer: SGD
+  rounds: 50
+  target_accuracy: 0.99
+  type: basic

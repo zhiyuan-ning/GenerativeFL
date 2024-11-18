@@ -1,0 +1,1 @@
+python main.py -c mnist-lenet5-iid.yml
